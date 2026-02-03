@@ -19,8 +19,6 @@ export default function Checkout() {
     const step = querySearch.get('step');
     
     const handleNext = () => {
-      
-
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         
     };

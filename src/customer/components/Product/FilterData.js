@@ -14,8 +14,8 @@ export const filters = [
         id: 'color',
         name: 'Color',
         options: [
-            {value: 'white', label: 'White'},
-            {value: 'black', label: 'Black'},
+            {value: 'white'||'White', label: 'White'},
+            {value: 'black'||'Black', label: 'Black'},
             {value: 'red', label: 'Red'},
             {value: 'maroon', label: 'Maroon'},
             {value: 'yellow', label: 'Yellow'},
