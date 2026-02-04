@@ -33,19 +33,6 @@ const Admin = () => {
     const [sideBarVisible, setSideBarVisible] = useState(false);
     const navigate = useNavigate();
 
-    // Check login
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        const logged = localStorage.getItem("adminLoggedIn") === "true";
-        setIsLoggedIn(logged);
-        if (!logged) navigate("/admin/login"); // redirect if not logged in
-    }, [navigate]);
-
-    const handleLogout = () => {
-        localStorage.removeItem("adminLoggedIn");
-        navigate("/admin/login");
-    };
 
     const drawer = (
         <Box
@@ -76,18 +63,9 @@ const Admin = () => {
                     </ListItemButton>
                 </ListItem>
 
-                {/* Logout Button */}
-                <ListItem disablePadding>
-                    <ListItemButton onClick={handleLogout}>
-                        <ListItemText primary="Logout" />
-                    </ListItemButton>
-                </ListItem>
             </List>
         </Box>
     );
-
-    // If not logged in, do not render admin content
-    if (!isLoggedIn) return null;
 
     return (
         <div className="flex h-screen w-full">
@@ -98,7 +76,7 @@ const Admin = () => {
                 {drawer}
             </div>
 
-            {/* Main content */}
+        
             <div className="flex-1 border border-blue-800 overflow-auto">
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
@@ -106,8 +84,6 @@ const Admin = () => {
                     <Route path="/products" element={<ProductTable />} />
                     <Route path="/orders" element={<OrderTable />} />
                     <Route path="/customers" element={<CustomersTable />} />
-                    {/* Fallback for unknown paths */}
-                    <Route path="*" element={<Navigate to="/admin" />} />
                 </Routes>
             </div>
         </div>
